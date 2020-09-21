@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Pivot : MonoBehaviour
 {
@@ -49,10 +51,18 @@ public class Pivot : MonoBehaviour
     }
     #endregion
 
+    public int direction = 1;
+    public void changeDir(int from, int wall)
+    {
+        int xLarge = obj.position.x > pivotWorld.x ? 1 : 0;
+        int yLarge = obj.position.y > pivotWorld.y ? 1 : 0;
+        int[] dir = new int[] { 1 - 2 * xLarge, 2 * yLarge - 1, 2 * xLarge -1, 1 - 2 * yLarge };
+        direction = (pivotLoc == from) ? direction : dir[wall];
+    }
     private void Update()
     {
         //if (Input.GetKey(KeyCode.R)) { rotate(0.5f, 1); }
-        rotate(240f*Time.deltaTime, 1);
+        rotate(240f*Time.deltaTime*direction, 1);
         //if (Input.GetKeyDown(KeyCode.A)) { setStickPivot(0); }
         //if (Input.GetKeyDown(KeyCode.S)) { setStickPivot(0.333f); }
         //if (Input.GetKeyDown(KeyCode.D)) { setStickPivot(0.666f); }
