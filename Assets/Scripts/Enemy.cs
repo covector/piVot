@@ -30,7 +30,10 @@ public class Enemy : MonoBehaviour
         float radAng = obj.eulerAngles.z * Mathf.PI / 180;
         obj.position += speed * Time.deltaTime * new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng), 0);
     }
-
+    public void Kill()
+    {
+        Destroy(gameObject);
+    }
     void Update()
     {
         face();

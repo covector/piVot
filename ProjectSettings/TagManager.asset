@@ -8,6 +8,8 @@ TagManager:
   - Wall1
   - Wall2
   - Wall3
+  - Coin
+  - Enemy
   layers:
   - Default
   - TransparentFX
