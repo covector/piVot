@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
-using UnityEngine.UIElements;
+﻿using UnityEngine;
 
 public class Pivot : MonoBehaviour
 {
@@ -63,11 +61,35 @@ public class Pivot : MonoBehaviour
         int[] dir = new int[] { 1 - 2 * xLarge, 2 * yLarge - 1, 2 * xLarge -1, 1 - 2 * yLarge };
         direction = (pivotLoc == from) ? direction : dir[wall];
     }
+    public void changeDir()
+    {
+        direction *= -1;
+    }
     #endregion
 
+    #region Special
+    public Vector2 getLoc(float portion)
+    {
+        float stickSpace = 2 * stickLimit * (portion - 0.5f);
+        float radAngle = obj.eulerAngles.z * Mathf.PI / 180;
+        Vector2 worldSpace = truePos + stickSpace * new Vector2(Mathf.Cos(radAngle), Mathf.Sin(radAngle));
+        return worldSpace * screenScale;
+    }
+    public float minSpeed;
+    public float maxSpeed;
+    private float currSpeed;
+    public void accelerate(int dir)
+    {
+        currSpeed = minSpeed * dir + maxSpeed * (1 - dir);
+    }
+    #endregion
+    private void Start()
+    {
+        currSpeed = minSpeed;
+    }
     private void Update()
     {
-        rotate(240f*Time.deltaTime*direction, 1);
+        rotate(currSpeed * Time.deltaTime * direction, 1);
         if (Input.GetKeyDown(KeyCode.X)) { togglePivot(); }
     }
 }
