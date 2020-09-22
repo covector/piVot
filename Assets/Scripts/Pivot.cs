@@ -8,6 +8,7 @@ public class Pivot : MonoBehaviour
     public Transform obj;
     public Vector2 pivotWorld;
     public Vector2 pivotLocal;
+    public static float screenScale;
     public Vector2 truePos;
     private Vector2 rotMat(Vector2 pos, float angle)
     {
@@ -38,7 +39,6 @@ public class Pivot : MonoBehaviour
 
     #region Player Control
     public float stickLimit;
-    public static float screenScale;
     private int pivotLoc;
     public void setStickPivot(float portion)
     {
@@ -54,6 +54,7 @@ public class Pivot : MonoBehaviour
     }
     #endregion
 
+    #region Direction Control
     public int direction = 1;
     public void changeDir(int from, int wall)
     {
@@ -62,6 +63,8 @@ public class Pivot : MonoBehaviour
         int[] dir = new int[] { 1 - 2 * xLarge, 2 * yLarge - 1, 2 * xLarge -1, 1 - 2 * yLarge };
         direction = (pivotLoc == from) ? direction : dir[wall];
     }
+    #endregion
+
     private void Update()
     {
         rotate(240f*Time.deltaTime*direction, 1);
