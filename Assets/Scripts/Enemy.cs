@@ -2,7 +2,7 @@
 
 public class Enemy : MonoBehaviour
 {
-    public Transform target;
+    private Transform target;
     public Transform obj;
     public float discount;
     public float speed;
@@ -25,14 +25,20 @@ public class Enemy : MonoBehaviour
         //viewAngle += Mathf.Min(delta, deltaScaled); //Linear / Frame Independent
         obj.eulerAngles =  new Vector3(0f, 0f, viewAngle);
     }
+    public static float screenScale;
     public void walk()
     {
         float radAng = obj.eulerAngles.z * Mathf.PI / 180;
-        obj.position += speed * Time.deltaTime * new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng), 0);
+        obj.position += screenScale * speed * Time.deltaTime * new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng), 0);
     }
     public void Kill()
     {
+        StartCoroutine(FindObjectOfType<SpawnManager>().Respawn());
         Destroy(gameObject);
+    }
+    private void Start()
+    {
+        target = FindObjectOfType<Player>().transform;
     }
     void Update()
     {
