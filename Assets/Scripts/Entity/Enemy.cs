@@ -71,4 +71,10 @@ public class Enemy : MonoBehaviour
         face();
         walk();
     }
+    public void GameOver()
+    {
+        speed = 0;
+        returnAngle = obj.eulerAngles.z;
+        working = 0;
+    }
 }

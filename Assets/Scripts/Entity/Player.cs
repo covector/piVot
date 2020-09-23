@@ -51,6 +51,6 @@ public class Player : MonoBehaviour
     }
     private void Die()
     {
-
+        FindObjectOfType<GameManager>().GameOver();
     }
 }
