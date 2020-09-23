@@ -19,8 +19,8 @@ public class DualAbility : MonoBehaviour
     }
     private void Update()
     {
-        int limit = coolDown <= 0 ? 1 : 0;
+        int limit = coolDown > 0 ? 1 : 0;
         coolDown -= Time.deltaTime * limit;
-
+        if (Input.GetKeyDown(KeyCode.Z)) { Ability(); }
     }
 }

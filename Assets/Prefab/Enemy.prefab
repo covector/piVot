@@ -51,6 +51,7 @@ MonoBehaviour:
   obj: {fileID: 586828823239102001}
   discount: 0.01
   speed: 1
+  body: {fileID: 586828824801664806}
 --- !u!61 &586828823239102000
 BoxCollider2D:
   m_ObjectHideFlags: 0

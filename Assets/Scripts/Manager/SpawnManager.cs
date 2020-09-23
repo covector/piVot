@@ -24,25 +24,28 @@ public class SpawnManager : MonoBehaviour
     public GameObject enemy;
     public float respawnCoolDown;
     public Vector3 spawnSite;
+    public float minSpeed;
+    public float maxSpeed;
     private Quaternion orientation = Quaternion.Euler(new Vector3(0, 0, 225f));
-    public void RequestRespawn()
+    public void RequestRespawn(float speed)
     {
-        StartCoroutine(Respawn());
+        StartCoroutine(Respawn(speed));
     }
-    private IEnumerator Respawn()
+    private IEnumerator Respawn(float speed)
     {
         Debug.Log("respawning");
         yield return new WaitForSeconds(respawnCoolDown);
         Debug.Log("respawned");
-        spawnEnemy();
+        spawnEnemy(speed);
     }
     public Vector3 getSpawn()
     {
         return spawnSite * area.getTopRight() / 2;
     }
-    public void spawnEnemy()
+    public void spawnEnemy(float speed)
     {
-        Instantiate(enemy, getSpawn(), orientation, parentArea).transform.localScale = new Vector2(1f / 9f, 1f / 9f);
+        GameObject enemySpawn = Instantiate(enemy, getSpawn(), orientation, parentArea);
+        enemySpawn.GetComponent<Enemy>().speed = speed;
     }
     #endregion
 
@@ -52,9 +55,16 @@ public class SpawnManager : MonoBehaviour
         {
             spawnCoin();
         }
-        for (int i = 0; i < enemyCount; i++)
+        if (enemyCount > 1)
         {
-            spawnEnemy();
+            for (float i = minSpeed; i <= maxSpeed; i += (maxSpeed - minSpeed) / (enemyCount - 1))
+            {
+                spawnEnemy(i);
+            }
+        }
+        else
+        {
+            spawnEnemy(minSpeed);
         }
     }
 }

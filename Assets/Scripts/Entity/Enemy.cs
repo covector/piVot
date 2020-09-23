@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    private Transform target;
+    public Transform target;
     public Transform obj;
     public float discount;
     public float speed;
@@ -33,10 +33,12 @@ public class Enemy : MonoBehaviour
         obj.position += working * screenScale * speed * Time.deltaTime * new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng), 0);
     }
     private int working = 1;
+    public SpriteRenderer body;
     public void Kill()
     {
         working = 0;
         GetComponent<BoxCollider2D>().enabled = false;
+        body.color = new Color(0.859f, 0.392f, 0.475f, 0.3f);
         StartCoroutine(ReturnSpawn());
     }
     private float returnAngle;
@@ -48,7 +50,7 @@ public class Enemy : MonoBehaviour
         Vector3 normedDelta = delta / delta.magnitude;
         Vector3 travelled = Vector3.zero;
         returnAngle = Mathf.Atan2(delta.y, delta.x) * 180 / Mathf.PI;
-        for (int i = 0; i < 3000; i++)
+        for (int i = 0; i < 30000; i++)
         {
             if (travelled.magnitude > delta.magnitude) { break; }
             Vector3 move = normedDelta * Time.deltaTime * speed;
@@ -56,12 +58,13 @@ public class Enemy : MonoBehaviour
             obj.position = (originalPos + travelled) * screenScale; 
             yield return null;
         }
-        FindObjectOfType<SpawnManager>().RequestRespawn();
+        FindObjectOfType<SpawnManager>().RequestRespawn(speed);
         Destroy(gameObject);
     }
-    private void Start()
+    void Start()
     {
-        target = FindObjectOfType<Player>().transform;
+        obj.localScale = new Vector3(1f / 9f, 1f / 9f, 1f);
+        target = FindObjectOfType<GameManager>().getSkin().transform;
     }
     void Update()
     {
