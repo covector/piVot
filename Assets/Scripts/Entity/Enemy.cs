@@ -27,10 +27,23 @@ public class Enemy : MonoBehaviour
         obj.eulerAngles =  new Vector3(0f, 0f, viewAngle * working + returnAngle * (1-working));
     }
     public static float screenScale;
+    public static float limit;
+    public float spriteWidth;
     public void walk()
     {
         float radAng = obj.eulerAngles.z * Mathf.PI / 180;
         obj.position += working * screenScale * speed * Time.deltaTime * new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng), 0);
+        //obj.position += screenScale * speed * Time.deltaTime * new Vector3(-1, -1, 0);
+        float x = obj.position.x;
+        float y = obj.position.y;
+        float wall = (limit - spriteWidth) * screenScale;
+        float xLeft = x < -1 * wall ? wall + x : 0;
+        float xRight = x > wall ? wall - x : 0;
+        float yTop = y > wall ? wall - y : 0;
+        float yBottom = y < -1 * wall ? wall + y : 0;
+        obj.position += new Vector3(xRight - xLeft, yTop - yBottom, 0);
+        //obj.position += new Vector3(xRight, 0, 0);
+        //obj.position = new Vector3(wall, wall, 0);
     }
     private int working = 1;
     public SpriteRenderer body;

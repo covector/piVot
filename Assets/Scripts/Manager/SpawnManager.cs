@@ -55,6 +55,7 @@ public class SpawnManager : MonoBehaviour
         {
             spawnCoin();
         }
+        Enemy.limit = area.getTopRight() / 2;
         if (enemyCount > 1)
         {
             for (float i = minSpeed; i <= maxSpeed; i += (maxSpeed - minSpeed) / (enemyCount - 1))

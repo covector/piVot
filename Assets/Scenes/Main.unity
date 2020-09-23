@@ -3662,7 +3662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piv: {fileID: 770984086}
-  invul: 1
+  invul: 0
 --- !u!50 &1372679521
 Rigidbody2D:
   serializedVersion: 4
@@ -4321,7 +4321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piv: {fileID: 770984086}
-  invul: 0
+  invul: 1
 --- !u!50 &1582861260
 Rigidbody2D:
   serializedVersion: 4
