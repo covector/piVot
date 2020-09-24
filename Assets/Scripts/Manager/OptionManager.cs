@@ -25,6 +25,7 @@ public class OptionManager : MonoBehaviour
             }
         }
     }
+    private string[] keys = new string[] { "ChangePivot", "UseAbility" };
     private string updateHotkey()
     {
         string entered = Input.inputString.ToUpper();
@@ -37,7 +38,6 @@ public class OptionManager : MonoBehaviour
 
         if (pressed != "" & pressed != "\n" & pressed != "\r" & pressed != "\b")
         {
-            string[] keys = new string[] { "ChangePivot", "UseAbility" };
             PlayerPrefs.SetString(keys[currentlyChanging], pressed);
             return pressed;
         }
@@ -58,5 +58,13 @@ public class OptionManager : MonoBehaviour
         transition.SetTrigger("StartTrans");
         yield return new WaitForSeconds(transitionPeriod);
         SceneManager.LoadScene(sceneIndex);
+    }
+    private string[] defaultKeys = new string[] { "X", "Z" };
+    void Start()
+    {
+        for (int i = 0; i < keys.Length; i++)
+        {
+            hotkeysText[i].text = PlayerPrefs.GetString(keys[i], defaultKeys[i]);
+        }
     }
 }

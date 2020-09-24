@@ -15,11 +15,12 @@ public class RocketAbility : MonoBehaviour
         piv.accelerate(ranOut);
         return fuel;
     }
+    public KeyCode abilityHotkey;
     private void Update()
     {
         int limit = fuel < 1 ? 1 : 0;
         fuel += fuelGainRate * Time.deltaTime * limit;
-        if (Input.GetKey(KeyCode.Z)) { Ability(); }
+        if (Input.GetKey(abilityHotkey)) { Ability(); }
         else { piv.accelerate(1); }
         bar.localScale = new Vector3(fuel, 1, 1);
     }

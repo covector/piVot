@@ -635,6 +635,7 @@ MonoBehaviour:
   - {fileID: 1992570046}
   left: {fileID: 1269748726}
   right: {fileID: 16788896}
+  selectedColor: {r: 0.43164828, g: 0.9433962, b: 0.45703006, a: 1}
   transition: {fileID: 230327408}
 --- !u!4 &263004524
 Transform:

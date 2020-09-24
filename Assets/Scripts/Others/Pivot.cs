@@ -54,12 +54,14 @@ public class Pivot : MonoBehaviour
 
     #region Direction Control
     public int direction = 1;
+    public float flipMultiplier;
     public void changeDir(int from, int wall)
     {
         int xLarge = truePos.x > pivotWorld.x ? 1 : 0;
         int yLarge = truePos.y > pivotWorld.y ? 1 : 0;
         int[] dir = new int[] { 1 - 2 * xLarge, 2 * yLarge - 1, 2 * xLarge -1, 1 - 2 * yLarge };
         direction = (pivotLoc == from) ? direction : dir[wall];
+        obj.localScale += new Vector3(0f, obj.localScale.y * (flipMultiplier-1f), 0f);
     }
     public void changeDir()
     {
@@ -87,9 +89,10 @@ public class Pivot : MonoBehaviour
     {
         currSpeed = minSpeed;
     }
+    public KeyCode pivotHotkey;
     private void Update()
     {
         rotate(currSpeed * Time.deltaTime * direction, 1);
-        if (Input.GetKeyDown(KeyCode.X)) { togglePivot(); }
+        if (Input.GetKeyDown(pivotHotkey)) { togglePivot(); }
     }
 }

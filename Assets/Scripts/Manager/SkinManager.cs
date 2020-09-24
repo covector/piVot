@@ -32,12 +32,13 @@ public class SkinManager : MonoBehaviour
         left.SetActive(currSkin != 0);
         right.SetActive(currSkin != skinList.Length - 1);
     }
+    public Color selectedColor;
     private void Start()
     {
         currSkin = PlayerPrefs.GetInt("Skin", 0);
         skinList[currSkin].SetActive(true);
         buttonList[currSkin].SetActive(false);
-        textList[currSkin].color = new Color(0.561f, 1f, 0.581f);
+        textList[currSkin].color = selectedColor;
         CheckEnd();
     }
     public Animator transition;

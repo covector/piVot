@@ -16,12 +16,13 @@ public class DoubleAbility : MonoBehaviour
     }
     public GameObject coolDownBar;
     public Transform bar;
+    public KeyCode abilityHotkey;
     private void Update()
     {
         int limit = coolDown > 0 ? 1 : 0;
         coolDownBar.SetActive(coolDown > 0);
         coolDown -= Time.deltaTime * limit;
-        if (Input.GetKeyDown(KeyCode.Z)) { Ability(); }
+        if (Input.GetKeyDown(abilityHotkey)) { Ability(); }
         bar.localScale = new Vector3(coolDown, 1, 1);
     }
 }

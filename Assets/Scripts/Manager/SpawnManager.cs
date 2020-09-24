@@ -9,11 +9,18 @@ public class SpawnManager : MonoBehaviour
     public PhoneScreenScaler area;
     public Transform parentArea;
     public float coinWidth;
+    public float deadAreaX;
+    public float deadAreaY;
     public void spawnCoin()
     {
         float side = area.getTopRight()/2 - coinWidth;
-        float randX = Random.Range(-side, side);
-        float randY = Random.Range(-side, side);
+        float randX;
+        float randY;
+        do
+        {
+            randX = Random.Range(-side, side);
+            randY = Random.Range(-side, side);
+        } while ((randX > deadAreaX * side) & (randY > deadAreaY * side));
         Vector2 pos = new Vector2(randX, randY);
         Instantiate(coin, pos, Quaternion.identity, parentArea).transform.localScale = new Vector2(1f / 9f, 1f / 9f);
     }
