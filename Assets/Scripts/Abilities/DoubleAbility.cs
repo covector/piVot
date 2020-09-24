@@ -14,10 +14,14 @@ public class DoubleAbility : MonoBehaviour
         }
         return false;
     }
+    public GameObject coolDownBar;
+    public Transform bar;
     private void Update()
     {
         int limit = coolDown > 0 ? 1 : 0;
+        coolDownBar.SetActive(coolDown > 0);
         coolDown -= Time.deltaTime * limit;
         if (Input.GetKeyDown(KeyCode.Z)) { Ability(); }
+        bar.localScale = new Vector3(coolDown, 1, 1);
     }
 }

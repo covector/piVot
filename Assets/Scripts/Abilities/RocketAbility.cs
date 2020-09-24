@@ -21,5 +21,12 @@ public class RocketAbility : MonoBehaviour
         fuel += fuelGainRate * Time.deltaTime * limit;
         if (Input.GetKey(KeyCode.Z)) { Ability(); }
         else { piv.accelerate(1); }
+        bar.localScale = new Vector3(fuel, 1, 1);
+    }
+    public GameObject coolDownBar;
+    public Transform bar;
+    private void Start()
+    {
+        coolDownBar.SetActive(true);
     }
 }

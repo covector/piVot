@@ -22,13 +22,13 @@ public class MenuManager : MonoBehaviour
     {
         StartCoroutine(GoScene(3));
     }
-    public IEnumerator GoScene(int sceneIndex)
+    private IEnumerator GoScene(int sceneIndex)
     {
         transition.SetTrigger("StartTrans");
         yield return new WaitForSeconds(transitionPeriod);
         SceneManager.LoadScene(sceneIndex);
     }
-    public IEnumerator QuitGameCoroutine()
+    private IEnumerator QuitGameCoroutine()
     {
         transition.SetTrigger("StartTrans");
         yield return new WaitForSeconds(transitionPeriod);

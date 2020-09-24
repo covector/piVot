@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(0); }
+        if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(1); }
         if (Input.GetKeyDown(KeyCode.Alpha1)) { PlayerPrefs.SetInt("Skin", 0); }
         if (Input.GetKeyDown(KeyCode.Alpha2)) { PlayerPrefs.SetInt("Skin", 1); }
         if (Input.GetKeyDown(KeyCode.Alpha3)) { PlayerPrefs.SetInt("Skin", 2); }
