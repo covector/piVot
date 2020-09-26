@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -56,6 +57,18 @@ public class GameManager : MonoBehaviour
             enemies[i].GameOver();
         }
         overScreen.SetActive(true);
+    }
+    public Animator transition;
+    private float transitionPeriod = 0.5f;
+    public void Back()
+    {
+        StartCoroutine(GoScene(0));
+    }
+    private IEnumerator GoScene(int sceneIndex)
+    {
+        transition.SetTrigger("StartTrans");
+        yield return new WaitForSeconds(transitionPeriod);
+        SceneManager.LoadScene(sceneIndex);
     }
     void Update()
     {

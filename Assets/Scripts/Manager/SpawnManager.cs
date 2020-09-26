@@ -41,9 +41,9 @@ public class SpawnManager : MonoBehaviour
     }
     private IEnumerator Respawn(float speed)
     {
-        Debug.Log("respawning");
+        //Debug.Log("respawning");
         yield return new WaitForSeconds(respawnCoolDown);
-        Debug.Log("respawned");
+        //Debug.Log("respawned");
         spawnEnemy(speed);
     }
     public Vector3 getSpawn()
