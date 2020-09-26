@@ -33,10 +33,12 @@ public class ParticleManager : MonoBehaviour
         emit1.enabled = false;
     }
     public Transform dualParticle;
-    public void rotatePart()
+    public GameObject dualSmoke;
+    public void rotatePart(Vector3 pos, Quaternion rot)
     {
         dualParticle.eulerAngles += new Vector3(0, 0, 180f);
         dualParticle.localPosition *= -1f;
+        Instantiate(dualSmoke, pos, rot, parent);
     }
     public GameObject muzzleFlashPart;
     public void MuzzleFlash()

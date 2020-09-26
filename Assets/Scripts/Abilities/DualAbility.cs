@@ -7,13 +7,14 @@ public class DualAbility : MonoBehaviour
     public Player invul;
     private float coolDown;
     public ParticleManager part;
+    public Transform obj;
     private bool Ability()
     {
         if (coolDown <= 0)
         {
             vul.invul = 1 - vul.invul;
             invul.invul = 1 - invul.invul;
-            part.rotatePart();
+            part.rotatePart(obj.position, obj.rotation);
             coolDown = 1f;
             colorChange();
             return true;
@@ -27,7 +28,7 @@ public class DualAbility : MonoBehaviour
     {
         int limit = coolDown > 0 ? 1 : 0;
         coolDownBar.SetActive(coolDown > 0);
-        coolDown -= Time.deltaTime * limit / 5f;
+        coolDown -= Time.deltaTime * limit / 6f;
         if (Input.GetKeyDown(abilityHotkey)) { Ability(); }
         bar.localScale = new Vector3(coolDown, 1, 1);
     }
