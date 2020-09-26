@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obj: {fileID: 5852193667675316385}
   speed: 4
+  particle: {fileID: 0}
+  particleTransform: {fileID: 0}
 --- !u!61 &5852193667675316387
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72,7 +74,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.14882427, y: 0.110816}
+  m_Size: {x: 0.13556433, y: 0.100942515}
   m_EdgeRadius: 0
 --- !u!50 &5852193667675316386
 Rigidbody2D:

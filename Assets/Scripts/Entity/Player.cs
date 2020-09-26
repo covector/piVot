@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collider)
     {
         WallDetection(collider);
+        CoinDetection(collider);
     }
     private void WallDetection(Collider2D collider)
     {

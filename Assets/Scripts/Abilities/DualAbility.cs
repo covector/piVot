@@ -6,12 +6,14 @@ public class DualAbility : MonoBehaviour
     public Player vul;
     public Player invul;
     private float coolDown;
+    public ParticleManager part;
     private bool Ability()
     {
         if (coolDown <= 0)
         {
             vul.invul = 1 - vul.invul;
             invul.invul = 1 - invul.invul;
+            part.rotatePart();
             coolDown = 1f;
             colorChange();
             return true;

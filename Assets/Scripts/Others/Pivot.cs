@@ -45,23 +45,26 @@ public class Pivot : MonoBehaviour
         Vector2 worldSpace = truePos + stickSpace * new Vector2(Mathf.Cos(radAngle), Mathf.Sin(radAngle));
         translate(worldSpace, 0, 1, 1);
     }
+    public ParticleManager partManager;
     public void togglePivot()
     {
         pivotLoc = 1 - pivotLoc;
         setStickPivot(pivotLoc);
+        partManager.pivotChange();
     }
     #endregion
 
     #region Direction Control
     public int direction = 1;
-    public float flipMultiplier;
+    public int flipMultiplier;
+    private float yScale;
     public void changeDir(int from, int wall)
     {
         int xLarge = truePos.x > pivotWorld.x ? 1 : 0;
         int yLarge = truePos.y > pivotWorld.y ? 1 : 0;
         int[] dir = new int[] { 1 - 2 * xLarge, 2 * yLarge - 1, 2 * xLarge -1, 1 - 2 * yLarge };
         direction = (pivotLoc == from) ? direction : dir[wall];
-        obj.localScale += new Vector3(0f, obj.localScale.y * (flipMultiplier-1f), 0f);
+        obj.localScale = new Vector3(obj.localScale.x, direction==1 ? yScale : yScale * flipMultiplier, obj.localScale.z);
     }
     public void changeDir()
     {
@@ -88,6 +91,7 @@ public class Pivot : MonoBehaviour
     private void Start()
     {
         currSpeed = minSpeed;
+        yScale = obj.localScale.y;
     }
     public KeyCode pivotHotkey;
     private void Update()

@@ -19,4 +19,28 @@ public class ParticleManager : MonoBehaviour
     {
         Instantiate(smokeParticle, pos, Quaternion.identity, parent);
     }
+    public ParticleSystem[] kineticParticles = new ParticleSystem[2];
+    private int initSide = 0;
+    public void pivotChange()
+    {
+        initSide = 1 - initSide;
+    }
+    public void setActive(bool active)
+    {
+        var emit0 = kineticParticles[initSide].emission;
+        emit0.enabled = active;
+        var emit1 = kineticParticles[1 - initSide].emission;
+        emit1.enabled = false;
+    }
+    public Transform dualParticle;
+    public void rotatePart()
+    {
+        dualParticle.eulerAngles += new Vector3(0, 0, 180f);
+        dualParticle.localPosition *= -1f;
+    }
+    public GameObject muzzleFlashPart;
+    public void MuzzleFlash()
+    {
+        muzzleFlashPart.SetActive(true);
+    }
 }
