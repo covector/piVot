@@ -36,19 +36,21 @@ public class Enemy : MonoBehaviour
         //obj.position += screenScale * speed * Time.deltaTime * new Vector3(-1, -1, 0);
         float x = obj.position.x;
         float y = obj.position.y;
-        float wall = (limit - spriteWidth) * screenScale;
+        float wall = limit * (1-spriteWidth);
         float xLeft = x < -1 * wall ? wall + x : 0;
         float xRight = x > wall ? wall - x : 0;
         float yTop = y > wall ? wall - y : 0;
         float yBottom = y < -1 * wall ? wall + y : 0;
         obj.position += new Vector3(xRight - xLeft, yTop - yBottom, 0);
         //obj.position += new Vector3(xRight, 0, 0);
-        //obj.position = new Vector3(wall, wall, 0);
+        //obj.position = new Vector3(wall, 0, 0);
     }
     private int working = 1;
     public SpriteRenderer body;
     public void Kill()
     {
+        FindObjectOfType<ParticleManager>().enemyDeath(obj.position);
+        FindObjectOfType<CameraShake>().InitShake(0.75f, 0.25f);
         working = 0;
         GetComponent<BoxCollider2D>().enabled = false;
         body.color = new Color(0.859f, 0.392f, 0.475f, 0.3f);

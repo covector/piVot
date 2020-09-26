@@ -14,6 +14,7 @@ public class PhoneScreenScaler : MonoBehaviour
         screen.localScale = topRight;
         Pivot.screenScale = minSide / 9f;
         Enemy.screenScale = minSide / 9f;
+        Enemy.limit = minSide / 2f;
     }
     void Update()
     {

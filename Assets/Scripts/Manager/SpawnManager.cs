@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour
         } while ((randX > deadAreaX * side) & (randY > deadAreaY * side));
         Vector2 pos = new Vector2(randX, randY);
         Instantiate(coin, pos, Quaternion.identity, parentArea).transform.localScale = new Vector2(1f / 9f, 1f / 9f);
+        FindObjectOfType<ParticleManager>().coinSpawn(pos);
     }
     #endregion
 
@@ -62,7 +63,6 @@ public class SpawnManager : MonoBehaviour
         {
             spawnCoin();
         }
-        Enemy.limit = area.getTopRight() / 2;
         if (enemyCount > 1)
         {
             for (float i = minSpeed; i <= maxSpeed; i += (maxSpeed - minSpeed) / (enemyCount - 1))
