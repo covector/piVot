@@ -10,7 +10,7 @@ public class Pivot : MonoBehaviour
     public Vector2 truePos;
     private Vector2 rotMat(Vector2 pos, float angle)
     {
-        float radAngle = angle * Mathf.PI / 180;
+        float radAngle = angle * Mathf.Deg2Rad;
         float x = pos.x * Mathf.Cos(radAngle) + pos.y * -1 * Mathf.Sin(radAngle);
         float y = pos.x * Mathf.Sin(radAngle) + pos.y * Mathf.Cos(radAngle);
         return new Vector2(x, y);
@@ -41,7 +41,7 @@ public class Pivot : MonoBehaviour
     public void setStickPivot(float portion)
     {
         float stickSpace = 2 * stickLimit * (portion-0.5f);
-        float radAngle = obj.eulerAngles.z * Mathf.PI / 180;
+        float radAngle = obj.eulerAngles.z * Mathf.Deg2Rad;
         Vector2 worldSpace = truePos + stickSpace * new Vector2(Mathf.Cos(radAngle), Mathf.Sin(radAngle));
         translate(worldSpace, 0, 1, 1);
     }
@@ -76,7 +76,7 @@ public class Pivot : MonoBehaviour
     public Vector2 getLoc(float portion)
     {
         float stickSpace = 2 * stickLimit * (portion - 0.5f);
-        float radAngle = obj.eulerAngles.z * Mathf.PI / 180;
+        float radAngle = obj.eulerAngles.z * Mathf.Deg2Rad;
         Vector2 worldSpace = truePos + stickSpace * new Vector2(Mathf.Cos(radAngle), Mathf.Sin(radAngle));
         return worldSpace * screenScale;
     }

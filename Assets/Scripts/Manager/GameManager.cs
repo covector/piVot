@@ -70,8 +70,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(transitionPeriod);
         SceneManager.LoadScene(sceneIndex);
     }
+    public float pauseCoolDown = 1f;
+    public void TogglePause()
+    {
+        int allowPause = pauseCoolDown >= 1f ? 1 : 0;
+        pauseCoolDown *= Time.timeScale;
+        Time.timeScale = 1 - Time.timeScale * allowPause;
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(1); }
+        int clip = pauseCoolDown > 1f ? 0 : 1;
+        pauseCoolDown += Time.deltaTime * clip;
+        if (Input.GetKeyDown(KeyCode.Escape)) { TogglePause(); }
     }
 }

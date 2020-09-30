@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     public Transform particleTransform;
     void Start()
     {
-        float radAng = obj.eulerAngles.z * Mathf.PI / 180;
+        float radAng = obj.eulerAngles.z * Mathf.Deg2Rad;
         direction = new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng));
     }
     void Update()

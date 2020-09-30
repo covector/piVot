@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public void face()
     {
         Vector2 vec = target.position - obj.position;
-        float targetAngle = Mathf.Atan2(vec.y, vec.x) * 180 / Mathf.PI;
+        float targetAngle = Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg;
         targetAngle = (targetAngle + 360) % 360;
         float viewAngle = obj.eulerAngles.z;
         int quad1t = targetAngle < 90f ? 1 : 0;
@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
         targetAngle -= quad1v * quad4 * 360f;
         viewAngle -= quad1t * quad4 * 360f;
         float delta = targetAngle - viewAngle;
-        viewAngle += delta * discount; //Exponential / Frame Dependent
+        viewAngle += delta * discount * Time.timeScale; //Exponential / Frame Dependent
 
         //float deltaScaled = Mathf.Sign(delta) * discount * Time.deltaTime;
         //viewAngle += Mathf.Min(delta, deltaScaled); //Linear / Frame Independent
@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
     public float spriteWidth;
     public void walk()
     {
-        float radAng = obj.eulerAngles.z * Mathf.PI / 180;
+        float radAng = obj.eulerAngles.z * Mathf.Deg2Rad;
         obj.position += working * screenScale * speed * Time.deltaTime * new Vector3(Mathf.Cos(radAng), Mathf.Sin(radAng), 0);
         //obj.position += screenScale * speed * Time.deltaTime * new Vector3(-1, -1, 0);
         float x = obj.position.x;
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
         Vector3 delta = finalPos - originalPos;
         Vector3 normedDelta = delta / delta.magnitude;
         Vector3 travelled = Vector3.zero;
-        returnAngle = Mathf.Atan2(delta.y, delta.x) * 180 / Mathf.PI;
+        returnAngle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
         for (int i = 0; i < 30000; i++)
         {
             if (travelled.magnitude > delta.magnitude) { break; }
