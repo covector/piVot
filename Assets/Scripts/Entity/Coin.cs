@@ -8,6 +8,7 @@ public class Coin : MonoBehaviour
         FindObjectOfType<ParticleManager>().coinCollect(gameObject.transform.position);
         FindObjectOfType<GameManager>().AddPoint();
         FindObjectOfType<SpawnManager>().spawnCoin();
+        FindObjectOfType<MoneyManager>().AddCoin();
         Destroy(gameObject);
     }
 }

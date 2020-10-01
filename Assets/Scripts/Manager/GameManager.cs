@@ -33,8 +33,7 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<DualAbility>().abilityHotkey = abilityHotkeyCode;
                 break;
         }
-
-
+        estimatedFPS = 1f/Time.deltaTime;
     }
     public GameObject getSkin()
     {
@@ -57,29 +56,39 @@ public class GameManager : MonoBehaviour
             enemies[i].GameOver();
         }
         overScreen.SetActive(true);
+        FindObjectOfType<MoneyManager>().SaveProgress();
     }
     public Animator transition;
     private float transitionPeriod = 0.5f;
+    public Image backTrans;
+    public float estimatedFPS;
     public void Back()
     {
+        transition.enabled = false;
         StartCoroutine(GoScene(0));
     }
     private IEnumerator GoScene(int sceneIndex)
     {
-        transition.SetTrigger("StartTrans");
-        yield return new WaitForSeconds(transitionPeriod);
+        for (float i = 0f; i <= 1f; i += 1f / (estimatedFPS * transitionPeriod))
+        {
+            backTrans.color = new Color(0f, 0f, 0f, i);
+            yield return null;
+        }
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneIndex);
     }
     public float pauseCoolDown = 1f;
+    public GameObject pauseScreen;
     public void TogglePause()
     {
         int allowPause = pauseCoolDown >= 1f ? 1 : 0;
         pauseCoolDown *= Time.timeScale;
         Time.timeScale = 1 - Time.timeScale * allowPause;
+        pauseScreen.SetActive(Time.timeScale == 0);
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(1); }
+        if (Input.GetKeyDown(KeyCode.R)) { Time.timeScale = 1f; SceneManager.LoadScene(1); }
         int clip = pauseCoolDown > 1f ? 0 : 1;
         pauseCoolDown += Time.deltaTime * clip;
         if (Input.GetKeyDown(KeyCode.Escape)) { TogglePause(); }
