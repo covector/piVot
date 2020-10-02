@@ -50,6 +50,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Entity
+    uniqueID: 4010949901
+    locked: 0
   - name: Weapon
     uniqueID: 3908036377
+    locked: 0
+  - name: Particle
+    uniqueID: 153868405
     locked: 0

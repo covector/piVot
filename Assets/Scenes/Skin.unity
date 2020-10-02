@@ -308,7 +308,7 @@ RectTransform:
   m_LocalScale: {x: 1.1141002, y: 1.1141002, z: 1.1141002}
   m_Children: []
   m_Father: {fileID: 1256327464}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -621,19 +621,16 @@ MonoBehaviour:
   - {fileID: 1457065349}
   - {fileID: 292038694}
   - {fileID: 95185190}
-  - {fileID: 1346077354}
   buttonList:
   - {fileID: 1043776684}
   - {fileID: 618731685}
   - {fileID: 1515542827}
   - {fileID: 2086473476}
-  - {fileID: 362309310}
   textList:
   - {fileID: 2048362568}
   - {fileID: 1338296415}
   - {fileID: 1791981099}
   - {fileID: 512099178}
-  - {fileID: 1992570046}
   left: {fileID: 1269748726}
   right: {fileID: 16788896}
   selectedColor: {r: 0.43164828, g: 0.9433962, b: 0.45703006, a: 1}
@@ -1431,6 +1428,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 808065751}
   m_CullTransparentMesh: 0
+--- !u!1 &1032490309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1032490310}
+  m_Layer: 5
+  m_Name: Time
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1032490310
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032490309}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1256327464}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1043776684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2078,6 +2110,7 @@ RectTransform:
   - {fileID: 292038695}
   - {fileID: 95185191}
   - {fileID: 1346077355}
+  - {fileID: 1032490310}
   - {fileID: 230327405}
   m_Father: {fileID: 0}
   m_RootOrder: 1
