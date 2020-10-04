@@ -50,6 +50,7 @@ MonoBehaviour:
   target: {fileID: 0}
   obj: {fileID: 586828823239102001}
   discount: 0.01
+  discount2: 20
   speed: 1
   spriteWidth: 0.03
   body: {fileID: 586828824801664806}

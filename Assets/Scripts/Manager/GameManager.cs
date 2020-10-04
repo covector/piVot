@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SecPlayerPrefs;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] skinObj;
-    public enum skin { Default, Double, Gun, Rocket, Dual };
+    public enum skin { Default, Double, Gun, Rocket, Watch, Dual };
     public skin skinChoice;
     public int skinIndex;
     private void Start()
@@ -30,6 +31,9 @@ public class GameManager : MonoBehaviour
                 FindObjectOfType<RocketAbility>().abilityHotkey = abilityHotkeyCode;
                 break;
             case 4:
+                FindObjectOfType<TimeAbility>().abilityHotkey = abilityHotkeyCode;
+                break;
+            case 5:
                 FindObjectOfType<DualAbility>().abilityHotkey = abilityHotkeyCode;
                 break;
         }
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour
         }
         overScreen.SetActive(true);
         FindObjectOfType<MoneyManager>().SaveProgress();
+        SecurePlayerPrefs.SetInt("HighScore", points);
     }
     public Animator transition;
     private float transitionPeriod = 0.5f;
@@ -79,12 +84,25 @@ public class GameManager : MonoBehaviour
     }
     public float pauseCoolDown = 1f;
     public GameObject pauseScreen;
+    private float initSpeed;
+    private bool pausing = false;
     public void TogglePause()
     {
-        int allowPause = pauseCoolDown >= 1f ? 1 : 0;
-        pauseCoolDown *= Time.timeScale;
-        Time.timeScale = 1 - Time.timeScale * allowPause;
-        pauseScreen.SetActive(Time.timeScale == 0);
+        if (pausing)
+        {
+            Time.timeScale = initSpeed;
+            pauseScreen.SetActive(false);
+            pauseCoolDown = 0f;
+            pausing = false;
+        }
+        else if(pauseCoolDown >= 1f)
+        {
+            pauseCoolDown = 1f;
+            pauseScreen.SetActive(true);
+            initSpeed = Time.timeScale;
+            Time.timeScale = 0;
+            pausing = true;
+        }
     }
     void Update()
     {

@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 230327408}
+  safe: 000000000000000000000000000000000000000000000000
 --- !u!4 &263004524
 Transform:
   m_ObjectHideFlags: 0

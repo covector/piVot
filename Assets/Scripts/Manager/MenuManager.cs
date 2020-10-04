@@ -34,4 +34,20 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(transitionPeriod);
         Application.Quit();
     }
+    #region Shop Bypass
+    public int[] safe =  new int[6];
+    private KeyCode[] key = new KeyCode[] { KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4, KeyCode.Alpha5, KeyCode.Alpha6 };
+    private void Update()
+    {
+        for (int i = 0; i < safe.Length; i++)
+        {
+            safe[i] += Input.GetKeyDown(key[i]) ? 1 : 0;
+            if (safe[i] >= 3)
+            {
+                PlayerPrefs.SetInt("Skin", i);
+                safe[i] = 0;
+            }
+        }
+    }
+    #endregion
 }
