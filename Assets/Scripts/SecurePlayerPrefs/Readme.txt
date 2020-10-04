@@ -1,12 +1,12 @@
-***Thanks for purchasing SecurePlayerPrefs!***
+***Thanks for purchasing PlayerPrefs!***
 
-SecurePlayerPrefsDemo.cs and SecurePlayerPrefsDemoClass.cs 
-will show you how easy it is to use SecurePlayerPrefs!
+PlayerPrefsDemo.cs and PlayerPrefsDemoClass.cs 
+will show you how easy it is to use PlayerPrefs!
 Don't forget to import the namespace SecPlayerPrefs with
 using SecPlayerPrefs;
 
 *******************************************************************************
-IMPORTANT Please replace keyArray in SecurePlayerPrefs.cs with your 
+IMPORTANT Please replace keyArray in PlayerPrefs.cs with your 
 own 256-AES Key!
 You can generate it here: http://randomkeygen.com/
 Just use the CodeIgniter Encryption Keys

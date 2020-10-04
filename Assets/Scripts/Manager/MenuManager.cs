@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
@@ -50,4 +51,9 @@ public class MenuManager : MonoBehaviour
         }
     }
     #endregion
+    public Text highScore;
+    private void Start()
+    {
+        highScore.text = "HighScore: " + PlayerPrefs.GetInt("HighScore").ToString();
+    }
 }

@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piv: {fileID: 1249884852}
-  invul: 1
+  invul: 0
 --- !u!50 &14283558
 Rigidbody2D:
   serializedVersion: 4
@@ -4648,6 +4648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67e228c3e0969d34ebb51545f40ff8af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinStorage: 0
   coinDisplay: {fileID: 622977883}
 --- !u!4 &441826328
 Transform:
@@ -6465,7 +6466,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5042a2455c7720c488286e4812f348a9, type: 3}
+    m_Font: {fileID: 12800000, guid: 22d857a3175d9d94d8109c2f8edf20e7, type: 3}
     m_FontSize: 47
     m_FontStyle: 0
     m_BestFit: 0
@@ -8787,7 +8788,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5042a2455c7720c488286e4812f348a9, type: 3}
+    m_Font: {fileID: 12800000, guid: 22d857a3175d9d94d8109c2f8edf20e7, type: 3}
     m_FontSize: 47
     m_FontStyle: 0
     m_BestFit: 0
@@ -9405,7 +9406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &954840726
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13191,7 +13192,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.10167475, y: 0}
+  m_Offset: {x: -0.09691927, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13202,7 +13203,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.79665065, y: 1}
+  m_Size: {x: 0.8061616, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &1387340462
 GameObject:
@@ -15309,7 +15310,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9607525, y: 2.4802399}
+  m_Size: {x: 0.9607525, y: 2.3347197}
   m_EdgeRadius: 0
 --- !u!1 &1587591198
 GameObject:

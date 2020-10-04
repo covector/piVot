@@ -1,5 +1,4 @@
-﻿using SecPlayerPrefs;
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,7 +60,8 @@ public class GameManager : MonoBehaviour
         }
         overScreen.SetActive(true);
         FindObjectOfType<MoneyManager>().SaveProgress();
-        SecurePlayerPrefs.SetInt("HighScore", points);
+        int maxPoints = Mathf.Max(PlayerPrefs.GetInt("HighScore"), points);
+        PlayerPrefs.SetInt("HighScore", maxPoints);
     }
     public Animator transition;
     private float transitionPeriod = 0.5f;
