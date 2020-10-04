@@ -2,8 +2,8 @@
 ![Banner](banner.png)
 
 ## Support Platform
-- [Windows 64x](https://github.com/covector/piVot/releases/download/v0.3/piVot_win64x.zip)
-- [MacOS](https://github.com/covector/piVot/releases/download/v0.3/piVot_macOS.zip)
+- [Windows 64x](https://github.com/covector/piVot/releases/download/v0.4/piVot_win64x.zip)
+- [MacOS](https://github.com/covector/piVot/releases/download/v0.4/piVot_macOS.zip)
 
 ## Installation
 Click the platform above to download the zipped game
