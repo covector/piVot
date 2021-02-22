@@ -17,7 +17,7 @@ Click the platform above to download the zipped game
 1. Click the "MacOS" link to download the zipped game
 2. Extract the app by double clicking the zip folder
 3. Double click the extracted "piVot" application to launch game
-4. If it cannot be opened due to security issue, go to System Preference $\rightarrow$ Security & Privacy $\rightarrow$ General and click open anyway
+4. If it cannot be opened due to security issue, go to System Preference > Security & Privacy > General and click open anyway
 
 ## Next Update
 - Pausing
